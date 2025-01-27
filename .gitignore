@@ -1,0 +1,35 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore virtual environment folders
+env/
+venv/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore large or temporary files
+*.out
+*.tmp
+*.npy
+
+# Ignore generated files in specific directories
+/global/cfs/cdirs/m3586/CBC_ROM/linear/ITG_adiabatic_ky_scan_dky_0.01/*.npy
+/global/cfs/cdirs/m3586/CBC_ROM/linear/ITG_adiabatic_ky_scan_dky_0.01/*.npz
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore other custom temporary files
+*_temp/
