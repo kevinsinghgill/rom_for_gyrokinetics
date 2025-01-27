@@ -39,9 +39,9 @@ def split_dataset(scan_dict, N, M, random_seed=None):
     return training_indices, testing_indices
 
 # Example usage
-N = 10  # Number of training points
+N = 5  # Number of training points
 M = 5   # Number of testing points
-random_seed = 5  # For reproducibility
+random_seed = 42  # For reproducibility
 interp_kind = 'cubic' # 'slinear', 'quadratic'
 
 training_indices, testing_indices = split_dataset(scan_dict, N, M, random_seed)
@@ -89,7 +89,7 @@ for idx in training_indices:
     A_list.append(dmd_model.atilde)         # shape (r, r)
     b_list.append(dmd_model._b)             # shape (r,)
 
-### CHANGES: Stack arrays AFTER we finish the loop
+### Stack arrays after we finish the loop
 A_array = np.stack(A_list, axis=0)              # shape: (N, r, r)
 b_array = np.stack(b_list, axis=0)              # shape: (N, r)
 
@@ -125,7 +125,7 @@ for test_idx_idx, test_idx in enumerate(testing_indices):
     for i in range(r):
         b_p[i] = b_interp_funcs[i](ky_test[test_idx_idx])
 
-    # Option A: Recompute eigenvalues from A_p
+    # Compute eigenvectors and eigenvalues from A_p
     eigs_p, vecs_p = np.linalg.eig(A_p)
 
     modes_full = V_global @ vecs_p  # shape (n, r), these are the DMD modes in full space
